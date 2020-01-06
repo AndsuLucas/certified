@@ -16,6 +16,11 @@
     // $illegalOffssetType = [[] => "xd"];
     // var_dump($illegalOffssetType);
 
+    //create variables with array values
+    //note: if we can use list() the array have been contain the ordenated indexes
+    $array = [1,2,3,4,5];
+    list($one, $two, $three, $four, $five) = $array;
+    var_dump($one, $two, $three, $four, $five);
 ?>
 
 <hr>
@@ -73,6 +78,35 @@
     call_user_func($foox, 'my message');
     call_user_func_array($foox, ['myclosure!']);
     
-    /**
-     * Execute the parent method
-     */
+    /** WE CAN'T EXECUTE THE CONSTRUCT FUNCTIONS WITH STRING CALL */
+    
+    var_dump(call_user_func(['array', 2])); //null
+    $var = array($msg);
+
+    var_dump(call_user_func([$var, 2])); //null
+    //$echo = echo; sintaxe error
+?>
+<hr>
+<h2>Iterables</h2>
+<?php 
+                        // Iterable type hint: Arrays and objects that implemented traversable
+    function doIterable(iterable $iterable) {
+        var_dump($iterable);
+        foreach ($iterable as $key => $value){
+            echo "$key = $value";
+        }
+    }
+
+    doIterable(array());
+    
+    
+    function testYield(): iterable
+    {
+        yield 1;
+        yield 2;
+    }
+
+    $arr = ['ok' => 1,2,3];
+
+    testYield($arr);
+    
