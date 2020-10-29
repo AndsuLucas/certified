@@ -18,5 +18,5 @@ $myVal = (function(){
 })();
 
 echo "This is a output constructor {$myVal}";
-print_r("This is a output constructor {$myVal}");
+print("This is a output constructor {$myVal}");
 
