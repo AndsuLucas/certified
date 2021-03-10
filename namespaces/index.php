@@ -1,16 +1,19 @@
 <?php
-namespace main;
-require_once './imports.php';
+// namespace _validNamespace;
+// namespace $invalidNamespace;
+// namespace 1nvalidNamespace
 
-define('TESTE', 2);
-
-function foo ($msg) {
-	echo 'not this foo :c';
-}
-
-use constant \teste\TESTE;
-use func \teste\foo;
+namespace first;
+	function get() {
+		return __NAMESPACE__;
+	}
 
 
-echo \TESTE;
-echo \foo('um');
+namespace second;
+	function get() {
+		return __NAMESPACE__;
+	}
+
+	echo \first\get();
+	echo '<br>';
+	echo get();
